@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/yani5752000/flybits-express-ejs/issues"
   },
-  "homepage": "https://github.com/yani5752000/flybits-express-ejs#readme"
+  "homepage": "https://github.com/yani5752000/flybits-express-ejs#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
