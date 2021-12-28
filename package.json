@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/yani5752000/flybits-express-ejs#readme",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.2"
   }
 }
