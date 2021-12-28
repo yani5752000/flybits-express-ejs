@@ -1,0 +1,20 @@
+{
+  "name": "flybits-express-ejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yani5752000/flybits-express-ejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yani5752000/flybits-express-ejs/issues"
+  },
+  "homepage": "https://github.com/yani5752000/flybits-express-ejs#readme"
+}
