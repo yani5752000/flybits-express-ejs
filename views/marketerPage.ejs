@@ -6,4 +6,11 @@
   <input type="text" name="longitude" placeholder="Enter longitude">
   <button type="submit">Submit</button>
 </form>
+
+<% for(const id in branchDatabase) {%>
+  <div class="marketer-div"><%= branchDatabase[id]["latitude"] %> 
+    <br>
+    <%= branchDatabase[id]["longitude"] %>
+  </div>
+  <% } %>
 <div class="marketer-div">This is for marketer.</div>

@@ -43,7 +43,8 @@ app.get("/user", (req, res) => {
 });
 
 app.get("/marketer", (req, res) => {
-  res.render("marketerPage");
+  const templateVars = {branchDatabase: branchDatabase};
+  res.render("marketerPage", templateVars);
 });
 
 app.post("/addBranch", (req, res) => {
@@ -53,6 +54,8 @@ app.post("/addBranch", (req, res) => {
   const id = Object.keys(branchDatabase).length + 1;
   branchDatabase[id] = {id, latitude, longitude};
   console.log(branchDatabase);
+  // const templateVars = {branchDatabase: branchDatabase}
+  // res.render("marketerPage", templateVars);
   res.redirect("/marketer");
 })
 
