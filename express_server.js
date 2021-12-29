@@ -21,11 +21,11 @@ const branchDatabase = {
 const promotionDatabase = {
   1: {id: 1, 
       branchId: 2, 
-      image: "https://www.shutterstock.com/image-illustration/3d-illustration-cartoon-characters-businessmen-hands-2022445304",
+      imageUrl: "https://www.shutterstock.com/image-illustration/3d-illustration-cartoon-characters-businessmen-hands-2022445304",
       caption: "Great Opportunity"},
   2:  {id: 1, 
        branchId: 2, 
-       image: "https://www.shutterstock.com/image-vector/central-bank-money-policy-inflation-interest-1996866989",
+       imageUrl: "https://www.shutterstock.com/image-vector/central-bank-money-policy-inflation-interest-1996866989",
        caption: "Fantastic Opportunity"}
 };
 
@@ -54,6 +54,19 @@ app.post("/addBranch", (req, res) => {
   const id = Object.keys(branchDatabase).length + 1;
   branchDatabase[id] = {id, latitude, longitude};
   console.log(branchDatabase);
+  // const templateVars = {branchDatabase: branchDatabase}
+  // res.render("marketerPage", templateVars);
+  res.redirect("/marketer");
+})
+
+app.post("/addPromotion", (req, res) => {
+  console.log("%%%", req.body)
+  const branchId = req.body.branchId;
+  const imageUrl = req.body.imageUrl;
+  const caption = req.body.caption;
+  const id = Object.keys(promotionDatabase).length + 1;
+  promotionDatabase[id] = {branchId, imageUrl, caption};
+  console.log(promotionDatabase);
   // const templateVars = {branchDatabase: branchDatabase}
   // res.render("marketerPage", templateVars);
   res.redirect("/marketer");

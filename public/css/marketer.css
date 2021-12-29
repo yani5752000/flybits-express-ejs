@@ -1,6 +1,6 @@
 .marketer-div {
-  height: 80px;
-  width: 120px;
+  height: auto;
+  width: auto;
   background-color: red;
   color: yellow;
 }

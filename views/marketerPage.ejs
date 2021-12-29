@@ -7,10 +7,21 @@
   <button type="submit">Submit</button>
 </form>
 
+<form action="/addPromotion" method="POST">
+  <label>Add New Promotion</label>
+  <input type="text" name="branchId" placeholder="Enter branch id">
+  <input type="text" name="imageUrl" placeholder="Enter branch image url">
+  <input type="text" name="caption" placeholder="Enter the caption">
+  <button type="submit">Submit</button>
+</form>
+
 <% for(const id in branchDatabase) {%>
-  <div class="marketer-div"><%= branchDatabase[id]["latitude"] %> 
+  <div class="marketer-div">
+    <p>Bank Branch id: <%= id %></p> 
     <br>
-    <%= branchDatabase[id]["longitude"] %>
+    <p>Bank Branch Latitude: <%= branchDatabase[id]["latitude"] %></p> 
+    <br>
+    <p>Bank Branch Longitude: <%= branchDatabase[id]["longitude"] %></p>
   </div>
   <% } %>
 <div class="marketer-div">This is for marketer.</div>
