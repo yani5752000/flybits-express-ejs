@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const PORT = 8080; // default port 8080
 
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({extended: true}));
+
 app.set("view engine", "ejs");
 
 app.use(express.static(__dirname + '/public'));
@@ -11,8 +14,8 @@ const flyDatabase = {
   "9sm5xK": "http://www.google.com"
 };
 const branchDatabase = {
-  1: {id: 1, Latitude: 3, Longitude: 5},
-  2: {id: 2, Latitude: 8, Longitude: 2}
+  1: {id: 1, latitude: 3, longitude: 5},
+  2: {id: 2, latitude: 8, longitude: 2}
 };
 
 const promotionDatabase = {
@@ -42,6 +45,16 @@ app.get("/user", (req, res) => {
 app.get("/marketer", (req, res) => {
   res.render("marketerPage");
 });
+
+app.post("/addBranch", (req, res) => {
+  console.log("%%%", req.body)
+  const latitude = req.body.latitude;
+  const longitude = req.body.longitude;
+  const id = Object.keys(branchDatabase).length + 1;
+  branchDatabase[id] = {id, latitude, longitude};
+  console.log(branchDatabase);
+  res.redirect("/marketer");
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}!`);
