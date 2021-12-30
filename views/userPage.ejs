@@ -17,18 +17,18 @@
       }
     </style>
     <script async defer
-     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlwJqBCLHwnbeUMfP2zzr9k7RRQJVaigQ&callback=initMap">
+     src="https://maps.googleapis.com/maps/api/js?key=API_KEY&callback=initMap">
     </script>
     <script>
-        function initMap() {
-            var dumbo = {lat: 40.700802, lng:73.987602};
-            var mapOptions = {
-                center: dumbo,
-                zoom: 10
-            };
-            var googlemap = new google.maps.Map(document.getElementById("map"), mapOptions);
-        }
-    </script>
+          function initMap() {
+              var dumbo = {lat: 40.700802, lng:73.987602};
+              var mapOptions = {
+                  center: dumbo,
+                  zoom: 10
+              };
+              var googlemap = new google.maps.Map(document.getElementById("map"), mapOptions);
+          }
+      </script>
     <link href="/css/user.css" rel="stylesheet" type="text/css">
     <title>User Page</title>
   </head>
