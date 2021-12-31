@@ -27,8 +27,15 @@
                   zoom: 10
               };
               var googlemap = new google.maps.Map(document.getElementById("map"), mapOptions);
+              google.maps.event.addListener("click", function (event) {
+                  var latitude = event.latLng.lat();
+                  var longitude = event.latLng.lng();
+                  console.log( latitude + ', ' + longitude );
+              }); //end addListener
           }
       </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/scripts/client.js"></script>
     <link href="/css/user.css" rel="stylesheet" type="text/css">
     <title>User Page</title>
   </head>

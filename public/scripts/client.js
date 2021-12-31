@@ -15,6 +15,10 @@ $(document).ready(function() {
   // });
 
   $( ".marketer-div" ).click(function() {
-    alert( "Handler for .click() called." );
+    alert( "Handler for .click() for marketer called." );
+  });
+
+  $( ".user-div" ).click(function() {
+    alert( "Handler for .click() for user called." );
   });
 });
