@@ -15,7 +15,11 @@ function initMap() {
   // // Configure the click listener.
   map.addListener("click", (mapsMouseEvent) => {
     //mapsMouseEvent.latLng
-    alert( "Handler for .click() called." + mapsMouseEvent.latLng);
+   
+    alert( "Handler for .click() called. " 
+    + mapsMouseEvent.latLng 
+    + " " + mapsMouseEvent.latLng.lat()
+    + " " + mapsMouseEvent.latLng.lng());
     // // Close the current InfoWindow.
     // infoWindow.close();
     // // Create a new InfoWindow.
