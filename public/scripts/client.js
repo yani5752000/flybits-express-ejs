@@ -15,7 +15,10 @@ function initMap() {
   // // Configure the click listener.
   map.addListener("click", (mapsMouseEvent) => {
     //mapsMouseEvent.latLng
-   
+    const lat =$("#latitude");
+    const lng =$("#longitude");
+    lat.val(mapsMouseEvent.latLng.lat());
+    lng.val(mapsMouseEvent.latLng.lng());
     alert( "Handler for .click() called. " 
     + mapsMouseEvent.latLng 
     + " " + mapsMouseEvent.latLng.lat()
