@@ -17,12 +17,12 @@ function initMap() {
     //mapsMouseEvent.latLng
     const lat =$("#latitude");
     const lng =$("#longitude");
-    lat.val(mapsMouseEvent.latLng.lat());
-    lng.val(mapsMouseEvent.latLng.lng());
-    alert( "Handler for .click() called. " 
-    + mapsMouseEvent.latLng 
-    + " " + mapsMouseEvent.latLng.lat()
-    + " " + mapsMouseEvent.latLng.lng());
+    lat.val("Your Latitude is " + mapsMouseEvent.latLng.lat());
+    lng.val("Your Longitude is " + mapsMouseEvent.latLng.lng());
+    // alert( "Handler for .click() called. " 
+    // + mapsMouseEvent.latLng 
+    // + " " + mapsMouseEvent.latLng.lat()
+    // + " " + mapsMouseEvent.latLng.lng());
     // // Close the current InfoWindow.
     // infoWindow.close();
     // // Create a new InfoWindow.
