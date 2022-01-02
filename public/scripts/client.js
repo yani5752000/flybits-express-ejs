@@ -13,27 +13,34 @@ function initMap() {
 
   // infoWindow.open(map);
   // // Configure the click listener.
-  map.addListener("click", (mapsMouseEvent) => {
+  map.addListener("mousemove", (mapsMouseEvent) => {
     //mapsMouseEvent.latLng
     const lat =$("#latitude");
     const lng =$("#longitude");
     lat.val("Your Latitude is " + mapsMouseEvent.latLng.lat());
     lng.val("Your Longitude is " + mapsMouseEvent.latLng.lng());
-    // alert( "Handler for .click() called. " 
-    // + mapsMouseEvent.latLng 
-    // + " " + mapsMouseEvent.latLng.lat()
-    // + " " + mapsMouseEvent.latLng.lng());
-    // // Close the current InfoWindow.
-    // infoWindow.close();
-    // // Create a new InfoWindow.
-    // infoWindow = new google.maps.InfoWindow({
-    //   position: mapsMouseEvent.latLng,
-    // });
-    // infoWindow.setContent(
-    //   JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-    // );
-    // infoWindow.open(map);
   });
+  // map.addListener("click", (mapsMouseEvent) => {
+  //   //mapsMouseEvent.latLng
+  //   const lat =$("#latitude");
+  //   const lng =$("#longitude");
+  //   lat.val("Your Latitude is " + mapsMouseEvent.latLng.lat());
+  //   lng.val("Your Longitude is " + mapsMouseEvent.latLng.lng());
+  //   // alert( "Handler for .click() called. " 
+  //   // + mapsMouseEvent.latLng 
+  //   // + " " + mapsMouseEvent.latLng.lat()
+  //   // + " " + mapsMouseEvent.latLng.lng());
+  //   // // Close the current InfoWindow.
+  //   // infoWindow.close();
+  //   // // Create a new InfoWindow.
+  //   // infoWindow = new google.maps.InfoWindow({
+  //   //   position: mapsMouseEvent.latLng,
+  //   // });
+  //   // infoWindow.setContent(
+  //   //   JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+  //   // );
+  //   // infoWindow.open(map);
+  // });
 }
 
 $(document).ready(function() {
