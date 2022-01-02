@@ -1,6 +1,24 @@
+<style>
+  #marketer-map {
+    width: 100%;
+    height: 400px;
+    background-color: grey;
+  }
+</style>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA-Qulye8g8i7y0ndzBRcQD_9quuD2c3E&callback=initMarketerMap">
+</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="/scripts/client.js"></script>
 <link href="/css/marketer.css" rel="stylesheet" type="text/css">
+
+<output id="latitude1">hiii</output>
+<br>
+<output id="longitude1">hooooo</output>
+
+<div id="marketer-map"></div>
+
 <form action="/addBranch" method="POST">
   <label>Add New Branch</label>
   <input type="text" name="latitude" placeholder="Enter latitude">
