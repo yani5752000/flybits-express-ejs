@@ -12,19 +12,24 @@ function initMarketerMap() {
 
   // infoWindow.open(map);
   // // Configure the click listener.
-  marketer_map.addListener("mousemove", (mapsMouseEvent) => {
-    //mapsMouseEvent.latLng
-    const lat1 =$("#latitude1");
-    const lng1 =$("#longitude1");
-    lat1.val("Your Latitude is " + mapsMouseEvent.latLng.lat());
-    lng1.val("Your Longitude is " + mapsMouseEvent.latLng.lng());
-  });
+  // marketer_map.addListener("mousemove", (mapsMouseEvent) => {
+  //   //mapsMouseEvent.latLng
+  //   const lat1 =$("#latitude1");
+  //   const lng1 =$("#longitude1");
+  //   lat1.val("Your Latitude is " + mapsMouseEvent.latLng.lat());
+  //   lng1.val("Your Longitude is " + mapsMouseEvent.latLng.lng());
+  // });
   marketer_map.addListener("click", (mapsMouseEvent) => {
     //mapsMouseEvent.latLng
-    const lat =$("#latitude");
-    const lng =$("#longitude");
-    lat.val("Your Latitude is " + mapsMouseEvent.latLng.lat());
-    lng.val("Your Longitude is " + mapsMouseEvent.latLng.lng());
+    const lat =$("#latitude1");
+    const lng =$("#longitude1");
+    lat.val("The Latitude is " + mapsMouseEvent.latLng.lat());
+    lng.val("The Longitude is " + mapsMouseEvent.latLng.lng());
+    const latitude = mapsMouseEvent.latLng.lat();
+    const longitude = mapsMouseEvent.latLng.lng();
+    $.ajax("/addBranch", {method: "POST", data: {latitude, longitude}})
+      .then(console.log("success"))
+      .catch(console.log("Error happened"))
     // alert( "Handler for .click() called. " 
     // + mapsMouseEvent.latLng 
     // + " " + mapsMouseEvent.latLng.lat()
