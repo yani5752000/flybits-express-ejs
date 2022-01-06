@@ -43,4 +43,20 @@
     <p>Bank Branch Longitude: <%= branchDatabase[id]["longitude"] %></p>
   </div>
   <% } %>
+
+  <% for(const id in promotionDatabase) {%>
+    <div class="marketer-div">
+      <p>Promotion id: <%= id %></p> 
+      <br>
+      <p>Bank Branch id: <%= promotionDatabase[id]["branchId"] %></p> 
+      <br>
+      <p>Image: </p><img src="<%=promotionDatabase[id].imageUrl%>">
+      <br>
+      <p>Caption: <%= promotionDatabase[id]["caption"] %></p>
+    </div>
+    <% } %>
 <div class="marketer-div">This is for marketer.</div>
+<!-- id: 1, 
+      branchId: 2, 
+      imageUrl: "https://www.shutterstock.com/image-illustration/3d-illustration-cartoon-characters-businessmen-hands-2022445304",
+      caption: -->
