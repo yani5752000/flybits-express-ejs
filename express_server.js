@@ -8,6 +8,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
 app.use(express.static(__dirname + '/public'));
+// app.use( express.static( "public" ) );
 
 const flyDatabase = {
   "b2xVn2": "http://www.lighthouselabs.ca",
@@ -21,11 +22,11 @@ const branchDatabase = {
 const promotionDatabase = {
   1: {id: 1, 
       branchId: 2, 
-      imageUrl: "https://www.shutterstock.com/image-illustration/3d-illustration-cartoon-characters-businessmen-hands-2022445304",
+      imageUrl: "/images/promotion_image.webp",
       caption: "Great Opportunity"},
   2:  {id: 1, 
        branchId: 2, 
-       imageUrl: "https://www.shutterstock.com/image-vector/central-bank-money-policy-inflation-interest-1996866989",
+       imageUrl: "/images/promotion_image.webp",
        caption: "Fantastic Opportunity"}
 };
 
