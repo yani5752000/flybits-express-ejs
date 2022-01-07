@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
 app.use(express.static(__dirname + '/public'));
-// app.use( express.static( "public" ) );
+
 
 const flyDatabase = {
   "b2xVn2": "http://www.lighthouselabs.ca",
