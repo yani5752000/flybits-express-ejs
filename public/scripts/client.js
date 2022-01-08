@@ -47,6 +47,10 @@ function initMarketerMap() {
   });
 }
 
+function diff(a, b) {
+  return Math.abs(a - b);
+}
+
 function initUserMap() {
   const myLatlng = { lat: 25.363, lng: -131.044 };
   const user_map = new google.maps.Map(document.getElementById("user-map"), {
@@ -69,7 +73,10 @@ function initUserMap() {
     lng.val("Your Longitude is " + mapsMouseEvent.latLng.lng());
     const refLat = 45.37464841017669;
     const refLng = -75.651369761328;
-    
+    if(diff(refLat, mapsMouseEvent.latLng.lat()) <= 0.0004 
+    && diff(refLng, mapsMouseEvent.latLng.lng()) <= 0.0004) {
+      alert("this is the promotion");
+    }
   });
   // map.addListener("click", (mapsMouseEvent) => {
   //   //mapsMouseEvent.latLng
