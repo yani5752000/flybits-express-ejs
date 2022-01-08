@@ -73,8 +73,8 @@ function initUserMap() {
     lng.val("Your Longitude is " + mapsMouseEvent.latLng.lng());
     const refLat = 45.37464841017669;
     const refLng = -75.651369761328;
-    if(diff(refLat, mapsMouseEvent.latLng.lat()) <= 0.0004 
-    && diff(refLng, mapsMouseEvent.latLng.lng()) <= 0.0004) {
+    if(diff(refLat, mapsMouseEvent.latLng.lat()) <= 0.0001 
+    && diff(refLng, mapsMouseEvent.latLng.lng()) <= 0.0001) {
       alert("this is the promotion");
     }
   });
