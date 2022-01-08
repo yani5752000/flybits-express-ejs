@@ -67,6 +67,9 @@ function initUserMap() {
     const lng =$("#longitude");
     lat.val("Your Latitude is " + mapsMouseEvent.latLng.lat());
     lng.val("Your Longitude is " + mapsMouseEvent.latLng.lng());
+    const refLat = 45.37464841017669;
+    const refLng = -75.651369761328;
+    
   });
   // map.addListener("click", (mapsMouseEvent) => {
   //   //mapsMouseEvent.latLng
