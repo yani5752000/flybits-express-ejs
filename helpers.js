@@ -18,4 +18,8 @@ const promotionDatabase = {
        caption: "Fantastic Opportunity"}
 };
 
-module.exports = {flyDatabase, branchDatabase, promotionDatabase};
+function diff(a, b) {
+  return Math.abs(a - b);
+}
+
+module.exports = {diff, flyDatabase, branchDatabase, promotionDatabase};

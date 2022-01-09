@@ -1,3 +1,10 @@
+
+
+
+//
+
+
+
 function initMarketerMap() {
   const myLatlng = { lat: -25.363, lng: 131.044 };
   const marketer_map = new google.maps.Map(document.getElementById("marketer-map"), {
@@ -47,9 +54,9 @@ function initMarketerMap() {
   });
 }
 
-function diff(a, b) {
-  return Math.abs(a - b);
-}
+const findBranch = (lat, lng) => {
+
+};
 
 function initUserMap() {
   const myLatlng = { lat: 25.363, lng: -131.044 };
@@ -67,16 +74,21 @@ function initUserMap() {
   // // Configure the click listener.
   user_map.addListener("mousemove", (mapsMouseEvent) => {
     //mapsMouseEvent.latLng
+    const latitude = mapsMouseEvent.latLng.lat();
+    const longitude = mapsMouseEvent.latLng.lng();
     const lat =$("#latitude");
     const lng =$("#longitude");
     lat.val("Your Latitude is " + mapsMouseEvent.latLng.lat());
     lng.val("Your Longitude is " + mapsMouseEvent.latLng.lng());
-    const refLat = 45.37464841017669;
-    const refLng = -75.651369761328;
-    if(diff(refLat, mapsMouseEvent.latLng.lat()) <= 0.0001 
-    && diff(refLng, mapsMouseEvent.latLng.lng()) <= 0.0001) {
-      alert("this is the promotion");
-    }
+    $.ajax("/userCheckPromotion", {method: "POST", data: {latitude, longitude}})
+      .then(console.log("success"))
+      .catch(console.log("Error happened"))
+    // const refLat = 45.37464841017669;
+    // const refLng = -75.651369761328;
+    // if(diff(refLat, mapsMouseEvent.latLng.lat()) <= 0.0001 
+    // && diff(refLng, mapsMouseEvent.latLng.lng()) <= 0.0001) {
+    //   alert("this is the promotion");
+    // }
   });
   // map.addListener("click", (mapsMouseEvent) => {
   //   //mapsMouseEvent.latLng

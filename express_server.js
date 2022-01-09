@@ -1,4 +1,4 @@
-const {flyDatabase, branchDatabase, promotionDatabase} = require("./helpers")
+const {diff, flyDatabase, branchDatabase, promotionDatabase} = require("./helpers");
 
 const express = require("express");
 const app = express();
@@ -55,6 +55,20 @@ app.post("/addPromotion", (req, res) => {
   // const templateVars = {branchDatabase: branchDatabase}
   // res.render("marketerPage", templateVars);
   res.redirect("/marketer");
+})
+app.post("/userCheckPromotion", (req, res) => {
+  // console.log("%%%", req.body)
+  const latitude = req.body.latitude;
+  const longitude = req.body.longitude;
+  
+  const refLat = 45.37464841017669;
+  const refLng = -75.651369761328;
+
+  if(diff(refLat, latitude) <= 0.0001 
+  && diff(refLng, longitude) <= 0.0001) {
+    console.log("this is the promotion");
+  }
+  res.redirect("/user");
 })
 
 app.listen(PORT, () => {
