@@ -81,7 +81,7 @@ function initUserMap() {
     lat.val("Your Latitude is " + mapsMouseEvent.latLng.lat());
     lng.val("Your Longitude is " + mapsMouseEvent.latLng.lng());
     $.ajax("/userCheckPromotion", {method: "POST", data: {latitude, longitude}})
-      .then(console.log("success"))
+      .then(function(response) {console.log("success response:", response)})
       .catch(console.log("Error happened"))
     // const refLat = 45.37464841017669;
     // const refLng = -75.651369761328;

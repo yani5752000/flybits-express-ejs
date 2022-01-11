@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/user", (req, res) => {
-  res.render("userPage");
+  res.render("userPage", {promotion: null});
 });
 
 app.get("/marketer", (req, res) => {
@@ -66,9 +66,13 @@ app.post("/userCheckPromotion", (req, res) => {
 
   if(diff(refLat, latitude) <= 0.0001 
   && diff(refLng, longitude) <= 0.0001) {
-    console.log("this is the promotion");
+    // console.log("this is the promotion");
+    const promotion = promotionDatabase["1"];
+  } else {
+    promotion = null;
   }
-  res.redirect("/user");
+  const templateVars = {promotion};
+  res.render("userPage.ejs", templateVars);
 })
 
 app.listen(PORT, () => {
