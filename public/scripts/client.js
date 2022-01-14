@@ -20,6 +20,14 @@
 //   return Math.abs(a - b);
 // }
 //
+const renderBanks = () => {};
+
+const renderPromotions = () => {};
+
+const createBankElement = () => {};
+
+const createPromotionElement = () => {};
+
 function loadBranches() {
   
 };
