@@ -44,6 +44,23 @@ app.post("/addBranch", (req, res) => {
   res.redirect("/marketer");
 })
 
+app.get("/branches", (req, res) => {
+  res.json(branchDatabase);
+})
+
+app.post("/branches", (req, res) => {
+  console.log("%%%", req.body)
+  const branchId = req.body.branchId;
+  const imageUrl = req.body.imageUrl;
+  const caption = req.body.caption;
+  const id = Object.keys(promotionDatabase).length + 1;
+  promotionDatabase[id] = {branchId, imageUrl, caption};
+  console.log(promotionDatabase);
+  // const templateVars = {branchDatabase: branchDatabase}
+  // res.render("marketerPage", templateVars);
+  res.redirect("/marketer");
+})
+
 app.post("/addPromotion", (req, res) => {
   console.log("%%%", req.body)
   const branchId = req.body.branchId;
