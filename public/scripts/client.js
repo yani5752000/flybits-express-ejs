@@ -1,35 +1,36 @@
-
-
-// const branchDatabase = {
-//   1: {id: 1, latitude: 3, longitude: 5},
-//   2: {id: 2, latitude: 8, longitude: 2}
-// };
-
-// const promotionDatabase = {
-//   1: {id: 1, 
-//       branchId: 2, 
-//       imageUrl: "/images/promotion_image.webp",
-//       caption: "Great Opportunity"},
-//   2:  {id: 1, 
-//        branchId: 2, 
-//        imageUrl: "/images/promotion_image.webp",
-//        caption: "Fantastic Opportunity"}
-// };
-
-// function diff(a, b) {
-//   return Math.abs(a - b);
-// }
-//
-const renderBanks = () => {};
+const renderBranches = (branches) => {
+  //console.log("here loadBranches: ", branches);
+  for(let id in branches) {
+    //console.log("then: ", branches.id)
+    $branch = createBranchElement(branches[id]);
+    $("#branches").append($branch);
+  }
+};
 
 const renderPromotions = () => {};
 
-const createBankElement = () => {};
+const createBranchElement = (branchObj) => {
+  $html = `
+  <div class="marketer-div">
+    <p>Bank Branch id: ${branchObj.id}</p> 
+    <br>
+    <p>Bank Branch Latitude: ${branchObj.latitude}</p> 
+    <br>
+    <p>Bank Branch Longitude: ${branchObj.longitude}</p>
+  </div>
+  `;
+
+  return $html; 
+};
 
 const createPromotionElement = () => {};
 
 function loadBranches() {
-  
+  $.ajax("/branches", {method: "GET"})
+      .then(function (theBranches) {
+        renderBranches(theBranches);
+      })
+      .catch(console.log("Error happened"))
 };
 
 function loadPromotions() {
@@ -42,21 +43,7 @@ function initMarketerMap() {
     zoom: 4,
     center: myLatlng,
   });
-  // Create the initial InfoWindow.
-  // let infoWindow = new google.maps.InfoWindow({
-  //   content: "Click the map to get Lat/Lng!",
-  //   position: myLatlng,
-  // });
-
-  // infoWindow.open(map);
-  // // Configure the click listener.
-  // marketer_map.addListener("mousemove", (mapsMouseEvent) => {
-  //   //mapsMouseEvent.latLng
-  //   const lat1 =$("#latitude1");
-  //   const lng1 =$("#longitude1");
-  //   lat1.val("Your Latitude is " + mapsMouseEvent.latLng.lat());
-  //   lng1.val("Your Longitude is " + mapsMouseEvent.latLng.lng());
-  // });
+  
   marketer_map.addListener("click", (mapsMouseEvent) => {
     //mapsMouseEvent.latLng
     const lat =$("#latitude1");
@@ -66,22 +53,12 @@ function initMarketerMap() {
     const latitude = mapsMouseEvent.latLng.lat();
     const longitude = mapsMouseEvent.latLng.lng();
     $.ajax("/addBranch", {method: "POST", data: {latitude, longitude}})
-      .then(console.log("success"))
+      .then(function(){
+        //empty the container to avoid duplicate messages
+        $("#branches").empty();
+        loadBranches();
+    })
       .catch(console.log("Error happened"))
-    // alert( "Handler for .click() called. " 
-    // + mapsMouseEvent.latLng 
-    // + " " + mapsMouseEvent.latLng.lat()
-    // + " " + mapsMouseEvent.latLng.lng());
-    // // Close the current InfoWindow.
-    // infoWindow.close();
-    // // Create a new InfoWindow.
-    // infoWindow = new google.maps.InfoWindow({
-    //   position: mapsMouseEvent.latLng,
-    // });
-    // infoWindow.setContent(
-    //   JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-    // );
-    // infoWindow.open(map);
   });
 }
 
@@ -95,14 +72,7 @@ function initUserMap() {
     zoom: 4,
     center: myLatlng,
   });
-  // Create the initial InfoWindow.
-  // let infoWindow = new google.maps.InfoWindow({
-  //   content: "Click the map to get Lat/Lng!",
-  //   position: myLatlng,
-  // });
-
-  // infoWindow.open(map);
-  // // Configure the click listener.
+  
   user_map.addListener("mousemove", (mapsMouseEvent) => {
     //mapsMouseEvent.latLng
     const latitude = mapsMouseEvent.latLng.lat();
@@ -148,24 +118,9 @@ $(document).ready(function() {
   // --- our code goes here ---
   console.log("ready");
 
-  // var dumbo = {lat: 40.700802, lng:73.987602};
-  // var mapOptions = {
-  //     center: dumbo,
-  //     zoom: 10
-  // };
-  // var googlemap = new google.maps.Map(document.getElementById("map"), mapOptions);
+  loadBranches();
 
-  // $("#tweet-text").on("input", function(event) {
-  //   console.log(140 - $(this).val().length);
-  //   let tweetLength = $(this).val().length;
-  //   let counter = $("#counter");
-  //   counter.val(140 - tweetLength);
-  //   if (counter.val() < 0) {
-  //     counter.css("color", "red");
-  //   } else {
-  //     counter.css("color", "#545149");
-  //   }
-  // });
+  
 
   $( ".marketer-div" ).click(function() {
     alert( "Handler for .click() for marketer called." );

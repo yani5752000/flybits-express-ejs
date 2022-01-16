@@ -34,7 +34,7 @@
   <button type="submit">Submit</button>
 </form>
 
-<% for(const id in branchDatabase) {%>
+<!-- <% for(const id in branchDatabase) {%>
   <div class="marketer-div">
     <p>Bank Branch id: <%= id %></p> 
     <br>
@@ -42,7 +42,9 @@
     <br>
     <p>Bank Branch Longitude: <%= branchDatabase[id]["longitude"] %></p>
   </div>
-  <% } %>
+  <% } %> -->
+
+  <section id="branches"></section>
 
   <% for(const id in promotionDatabase) {%>
     <div class="marketer-div">
