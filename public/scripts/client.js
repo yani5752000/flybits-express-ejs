@@ -1,13 +1,16 @@
 const renderBranches = (branches) => {
-  //console.log("here loadBranches: ", branches);
   for(let id in branches) {
-    //console.log("then: ", branches.id)
     $branch = createBranchElement(branches[id]);
     $("#branches").append($branch);
   }
 };
 
-const renderPromotions = () => {};
+const renderUserPromotions = (userPromotions) => {
+  for(let id in userPromotions) {
+    $promotion = createBranchElement(userPromotions[id]);
+    $("#userPromotions").append($promotion);
+  }
+};
 
 const createBranchElement = (branchObj) => {
   $html = `
@@ -84,34 +87,9 @@ function initUserMap() {
     $.ajax("/userCheckPromotion", {method: "POST", data: {latitude, longitude}})
       .then(function(response) {console.log("success response:", response)})
       .catch(console.log("Error happened"))
-    // const refLat = 45.37464841017669;
-    // const refLng = -75.651369761328;
-    // if(diff(refLat, mapsMouseEvent.latLng.lat()) <= 0.0001 
-    // && diff(refLng, mapsMouseEvent.latLng.lng()) <= 0.0001) {
-    //   alert("this is the promotion");
-    // }
+    
   });
-  // map.addListener("click", (mapsMouseEvent) => {
-  //   //mapsMouseEvent.latLng
-  //   const lat =$("#latitude");
-  //   const lng =$("#longitude");
-  //   lat.val("Your Latitude is " + mapsMouseEvent.latLng.lat());
-  //   lng.val("Your Longitude is " + mapsMouseEvent.latLng.lng());
-  //   // alert( "Handler for .click() called. " 
-  //   // + mapsMouseEvent.latLng 
-  //   // + " " + mapsMouseEvent.latLng.lat()
-  //   // + " " + mapsMouseEvent.latLng.lng());
-  //   // // Close the current InfoWindow.
-  //   // infoWindow.close();
-  //   // // Create a new InfoWindow.
-  //   // infoWindow = new google.maps.InfoWindow({
-  //   //   position: mapsMouseEvent.latLng,
-  //   // });
-  //   // infoWindow.setContent(
-  //   //   JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-  //   // );
-  //   // infoWindow.open(map);
-  // });
+
 }
 
 $(document).ready(function() {
@@ -119,6 +97,8 @@ $(document).ready(function() {
   console.log("ready");
 
   loadBranches();
+
+  loadPromotions();
 
   
 
