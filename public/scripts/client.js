@@ -41,9 +41,9 @@ function loadPromotions() {
 };
 
 function initMarketerMap() {
-  const myLatlng = { lat: -25.363, lng: 131.044 };
+  const myLatlng = { lat: 45.37464841017669, lng: -75.651369761328 };
   const marketer_map = new google.maps.Map(document.getElementById("marketer-map"), {
-    zoom: 4,
+    zoom: 20,
     center: myLatlng,
   });
   
@@ -70,9 +70,11 @@ const findBranch = (lat, lng) => {
 };
 
 function initUserMap() {
-  const myLatlng = { lat: 25.363, lng: -131.044 };
+  const myLatlng = { lat: 45.37464841017669, lng: -75.651369761328 };
+  // const refLat = 45.37464841017669;
+  // const refLng = -75.651369761328;
   const user_map = new google.maps.Map(document.getElementById("user-map"), {
-    zoom: 4,
+    zoom: 20,
     center: myLatlng,
   });
   
