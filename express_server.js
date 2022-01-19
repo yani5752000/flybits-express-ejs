@@ -48,6 +48,10 @@ app.get("/branches", (req, res) => {
   res.json(branchDatabase);
 })
 
+app.get("/promotions", (req, res) => {
+  res.json(promotionDatabase);
+})
+
 app.post("/branches", (req, res) => {
   console.log("%%%", req.body)
   const branchId = req.body.branchId;
