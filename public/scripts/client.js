@@ -5,9 +5,11 @@ const renderBranches = (branches) => {
   }
 };
 
-const renderUserPromotions = (userPromotions) => {
-  for(let id in userPromotions) {
-    $promotion = createBranchElement(userPromotions[id]);
+
+
+const renderUserPromotions = (Promotions) => {
+  for(let id in Promotions) {
+    $promotion = createPromotionElement(userPromotions[id]);
     $("#userPromotions").append($promotion);
   }
 };
@@ -36,8 +38,12 @@ function loadBranches() {
       .catch(console.log("Error happened"))
 };
 
-function loadPromotions() {
-
+function loadMarketerPromotions() {
+  $.ajax("/marketerPromotions", {method: "GET"})
+      .then(function (marketerPromotions) {
+        renderMarketerPromotions(marketerPromotions);
+      })
+      .catch(console.log("Error happened"))
 };
 
 function initMarketerMap() {
@@ -71,8 +77,7 @@ const findBranch = (lat, lng) => {
 
 function initUserMap() {
   const myLatlng = { lat: 45.37464841017669, lng: -75.651369761328 };
-  // const refLat = 45.37464841017669;
-  // const refLng = -75.651369761328;
+  
   const user_map = new google.maps.Map(document.getElementById("user-map"), {
     zoom: 20,
     center: myLatlng,
