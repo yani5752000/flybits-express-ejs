@@ -28,7 +28,19 @@ const createBranchElement = (branchObj) => {
   return $html; 
 };
 
-const createPromotionElement = () => {};
+const createPromotionElement = (promotionObj) => {
+  $html = `
+  <div class="marketer-div">
+    <p>Bank Branch id: ${promotionObj.id}</p> 
+    <br>
+    <p>Bank Branch Latitude: ${promotionObj.image}</p> 
+    <br>
+    <p>Bank Branch Longitude: ${promotionObj.caption}</p>
+  </div>
+  `;
+
+  return $html;
+};
 
 function loadBranches() {
   $.ajax("/branches", {method: "GET"})
