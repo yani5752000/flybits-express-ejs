@@ -5,11 +5,17 @@ const renderBranches = (branches) => {
   }
 };
 
+const renderMarketerPromotions = (Promotions) => {
+  for(let id in Promotions) {
+    $promotion = createPromotionElement(Promotions[id]);
+    $("#marketerPromotions").append($promotion);
+  }
+};
 
 
 const renderUserPromotions = (Promotions) => {
   for(let id in Promotions) {
-    $promotion = createPromotionElement(userPromotions[id]);
+    $promotion = createPromotionElement(Promotions[id]);
     $("#userPromotions").append($promotion);
   }
 };
@@ -31,16 +37,26 @@ const createBranchElement = (branchObj) => {
 const createPromotionElement = (promotionObj) => {
   $html = `
   <div class="marketer-div">
-    <p>Bank Branch id: ${promotionObj.id}</p> 
+    <p>Promotion id: ${promotionObj.id}</p> 
     <br>
-    <p>Bank Branch Latitude: ${promotionObj.image}</p> 
+    <p>Bank Branch id: ${promotionObj.branchId}</p> 
     <br>
-    <p>Bank Branch Longitude: ${promotionObj.caption}</p>
+    <p>Image: </p> <img src="${promotionObj.imageUrl}" alt="">
+    <br>
+    <p>Caption:  ${promotionObj.caption}</p>
   </div>
   `;
 
   return $html;
 };
+
+{/* <p>Promotion id: <%= id %></p> 
+      <br>
+      <p>Bank Branch id: <%= promotionDatabase[id]["branchId"] %></p> 
+      <br>
+      <p>Image: </p><img src="<%=promotionDatabase[id].imageUrl%>" alt="">
+      <br>
+      <p>Caption:  */}
 
 function loadBranches() {
   $.ajax("/branches", {method: "GET"})
@@ -51,9 +67,9 @@ function loadBranches() {
 };
 
 function loadMarketerPromotions() {
-  $.ajax("/marketerPromotions", {method: "GET"})
-      .then(function (marketerPromotions) {
-        renderMarketerPromotions(marketerPromotions);
+  $.ajax("/Promotions", {method: "GET"})
+      .then(function (Promotions) {
+        renderMarketerPromotions( Promotions);
       })
       .catch(console.log("Error happened"))
 };
@@ -117,7 +133,9 @@ $(document).ready(function() {
 
   loadBranches();
 
-  loadPromotions();
+  loadMarketerPromotions();
+
+  // loadPromotions();
 
   
 
