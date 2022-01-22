@@ -13,11 +13,15 @@ const renderMarketerPromotions = (Promotions) => {
 };
 
 
-const renderUserPromotions = (Promotions) => {
+const renderUserPromotions = (Promotions, userCoords) => {
   for(let id in Promotions) {
     $promotion = createPromotionElement(Promotions[id]);
     $("#userPromotions").append($promotion);
   }
+};
+
+const loadUserPromotions = (userCoords) => {
+
 };
 
 const createBranchElement = (branchObj) => {
