@@ -4,18 +4,23 @@ const flyDatabase = {
 };
 const branchDatabase = {
   1: {id: 1, latitude: 3, longitude: 5},
-  2: {id: 2, latitude: 8, longitude: 2}
+  2: {id: 2, latitude: 8, longitude: 2},
+  3: {id: 3, latitude: 45.37464841017669, longitude: -75.651369761328}
 };
 
 const promotionDatabase = {
   1: {id: 1, 
-      branchId: 2, 
+      branchId: 1, 
       imageUrl: "/images/promotion_image.webp",
       caption: "Great Opportunity"},
-  2:  {id: 1, 
+  2:  {id: 2, 
        branchId: 2, 
        imageUrl: "/images/promotion_image.webp",
-       caption: "Fantastic Opportunity"}
+       caption: "Fantastic Opportunity"},
+  3:   {id: 3, 
+        branchId: 3, 
+        imageUrl: "/images/promotion_image.webp",
+        caption: "Fabulous Opportunity"}
 };
 
 function diff(a, b) {

@@ -1,3 +1,7 @@
+function diff(a, b) {
+  return Math.abs(a - b);
+}
+
 const renderBranches = (branches) => {
   for(let id in branches) {
     $branch = createBranchElement(branches[id]);
@@ -13,15 +17,38 @@ const renderMarketerPromotions = (Promotions) => {
 };
 
 
-const renderUserPromotions = (Promotions, userCoords) => {
-  for(let id in Promotions) {
-    $promotion = createPromotionElement(Promotions[id]);
+const renderUserPromotions = (promotions) => {
+  for(let id in promotions) {
+    $promotion = createPromotionElement(promotions[id]);
     $("#userPromotions").append($promotion);
   }
 };
 
-const loadUserPromotions = (userCoords) => {
+const loadUserPromotions = (userLat, userLng) => {
+  $.ajax("/branches", {method: "GET"})
+      .then(function (theBranches) {
+        const brancheIds = [];
+        for(const id in theBranches) {
+          const latitude = theBranches[id].latitude;
+          const longitude = theBranches[id].longitude;
+          if(diff(userLat, latitude) <= 0.0001 && diff(userLng, longitude) <= 0.0001) {
+            brancheIds.push(theBranches[id]);
+          }
+        }
+        $.ajax("/Promotions", {method: "GET"})
+        .then(function (promotions) {
+          const userPromotions = [];
+          for(const id in promotions) {
+            if(brancheIds.includes(promotions[id].branchId)) {
+              userPromotions.push(promotions[id]);
+            }
+          }
+          renderUserPromotions(userPromotions);
+        })
+        .catch(console.log("Error happened"))
 
+        })
+        .catch(console.log("Error happened"))
 };
 
 const createBranchElement = (branchObj) => {
