@@ -17,35 +17,60 @@ const renderMarketerPromotions = (Promotions) => {
 };
 
 
-const renderUserPromotions = (promotions) => {
-  for(let id in promotions) {
-    $promotion = createPromotionElement(promotions[id]);
-    $("#userPromotions").append($promotion);
-  }
+const renderUserPromotion = (promotion) => {
+  // for(let id in promotions) {
+  //   $promotion = createPromotionElement(promotions[id]);
+  //   $("#userPromotions").append($promotion);
+  // }
+
+  $promotion = createPromotionElement(promotion);
+  $("#userPromotions").append($promotion);
 };
 
 const loadUserPromotions = (userLat, userLng) => {
   $.ajax("/branches", {method: "GET"})
       .then(function (theBranches) {
-        const brancheIds = [];
+        let brancheId;
         for(const id in theBranches) {
           const latitude = theBranches[id].latitude;
           const longitude = theBranches[id].longitude;
           if(diff(userLat, latitude) <= 0.0001 && diff(userLng, longitude) <= 0.0001) {
-            brancheIds.push(theBranches[id]);
-          }
-        }
-        $.ajax("/Promotions", {method: "GET"})
-        .then(function (promotions) {
-          const userPromotions = [];
-          for(const id in promotions) {
-            if(brancheIds.includes(promotions[id].branchId)) {
-              userPromotions.push(promotions[id]);
+            console.log("here we are");
+            $("#userPromotions").empty();
+            $("#userPromotions").append("<p>Promotionnnnnn</p>")
+            // brancheId = id;
+            // //break;
+
+            // console.log("found branch id");
+            // $.ajax("/Promotions", {method: "GET"})
+            // .then(function (promotions) {
+            //   console.log("now in promotion creation");
+            //   let userPromotion;
+            //   for(const id in promotions) {
+            //     if(brancheId === promotions[id].branchId) {
+            //       userPromotion = promotions[id];
+            //       //break;
+            //     }
+            //   }
+            //   renderUserPromotion(userPromotion);
+            // })
+            // .catch(console.log("Error happened"))
+              }
             }
-          }
-          renderUserPromotions(userPromotions);
-        })
-        .catch(console.log("Error happened"))
+        // console.log("came out");
+        // $.ajax("/Promotions", {method: "GET"})
+        // .then(function (promotions) {
+        //   console.log("now in promotion creation");
+        //   let userPromotion;
+        //   for(const id in promotions) {
+        //     if(brancheId === promotions[id].branchId) {
+        //       userPromotion = promotions[id];
+        //       break;
+        //     }
+        //   }
+        //   renderUserPromotion(userPromotion);
+        // })
+        // .catch(console.log("Error happened"))
 
         })
         .catch(console.log("Error happened"))
@@ -144,16 +169,17 @@ function initUserMap() {
   
   user_map.addListener("mousemove", (mapsMouseEvent) => {
     //mapsMouseEvent.latLng
+    console.log("this is the mousemove listener");
     const latitude = mapsMouseEvent.latLng.lat();
     const longitude = mapsMouseEvent.latLng.lng();
     const lat =$("#latitude");
     const lng =$("#longitude");
     lat.val("Your Latitude is " + mapsMouseEvent.latLng.lat());
     lng.val("Your Longitude is " + mapsMouseEvent.latLng.lng());
-    $.ajax("/userCheckPromotion", {method: "POST", data: {latitude, longitude}})
-      .then(function(response) {console.log("success response:", response)})
-      .catch(console.log("Error happened"))
-    
+    // $.ajax("/userCheckPromotion", {method: "POST", data: {latitude, longitude}})
+    //   .then(function(response) {console.log("success response:", response)})
+    //   .catch(console.log("Error happened"))
+    loadUserPromotions(latitude, longitude);
   });
 
 }
