@@ -39,8 +39,7 @@ const loadUserPromotions = (userLat, userLng) => {
           if(diff(userLat, latitude) <= 0.0001 && diff(userLng, longitude) <= 0.0001) {
             bId = branchId;
             console.log("here we are; branchId: ", branchId);
-            $("#userPromotions").empty();
-            $("#userPromotions").append("<p>Promotionnnnnn</p>")
+           
             $.ajax("/Promotions", {method: "GET"})
             .then(function (promotions) {
               console.log("now in promotion creation");
