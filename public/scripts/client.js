@@ -22,22 +22,46 @@ const renderUserPromotion = (promotion) => {
   //   $promotion = createPromotionElement(promotions[id]);
   //   $("#userPromotions").append($promotion);
   // }
+  console.log("we are in render");
 
   $promotion = createPromotionElement(promotion);
+  $("#userPromotions").empty();
   $("#userPromotions").append($promotion);
 };
 
 const loadUserPromotions = (userLat, userLng) => {
   $.ajax("/branches", {method: "GET"})
       .then(function (theBranches) {
-        let brancheId;
-        for(const id in theBranches) {
-          const latitude = theBranches[id].latitude;
-          const longitude = theBranches[id].longitude;
+        let bId;
+        for(const branchId in theBranches) {
+          const latitude = theBranches[branchId].latitude;
+          const longitude = theBranches[branchId].longitude;
           if(diff(userLat, latitude) <= 0.0001 && diff(userLng, longitude) <= 0.0001) {
-            console.log("here we are");
+            bId = branchId;
+            console.log("here we are; branchId: ", branchId);
             $("#userPromotions").empty();
             $("#userPromotions").append("<p>Promotionnnnnn</p>")
+            $.ajax("/Promotions", {method: "GET"})
+            .then(function (promotions) {
+              console.log("now in promotion creation");
+              //let userPromotion;
+              for(const id in promotions) {
+                console.log("inside loop promotions; id: ", id);
+                console.log("prom branchId: ", promotions[id].branchId);
+                console.log(" branchId: ", branchId);
+                console.log(branchId === promotions[id].branchId);
+                if(branchId == promotions[id].branchId) {
+                  console.log("so we got it? ", branchId);
+                  
+                  let userPromotion = promotions[id];
+                  console.log(userPromotion)
+                  renderUserPromotion(userPromotion);
+                  //break;
+                }
+              }
+              
+            })
+            .catch(console.log("Error happened"))
             // brancheId = id;
             // //break;
 
