@@ -32,12 +32,12 @@ const renderUserPromotion = (promotion) => {
 const loadUserPromotions = (userLat, userLng) => {
   $.ajax("/branches", {method: "GET"})
       .then(function (theBranches) {
-        let bId;
+        
         for(const branchId in theBranches) {
           const latitude = theBranches[branchId].latitude;
           const longitude = theBranches[branchId].longitude;
           if(diff(userLat, latitude) <= 0.0001 && diff(userLng, longitude) <= 0.0001) {
-            bId = branchId;
+            
             console.log("here we are; branchId: ", branchId);
            
             $.ajax("/Promotions", {method: "GET"})
