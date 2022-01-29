@@ -61,39 +61,12 @@ const loadUserPromotions = (userLat, userLng) => {
               
             })
             .catch(console.log("Error happened"))
-            // brancheId = id;
-            // //break;
-
-            // console.log("found branch id");
-            // $.ajax("/Promotions", {method: "GET"})
-            // .then(function (promotions) {
-            //   console.log("now in promotion creation");
-            //   let userPromotion;
-            //   for(const id in promotions) {
-            //     if(brancheId === promotions[id].branchId) {
-            //       userPromotion = promotions[id];
-            //       //break;
-            //     }
-            //   }
-            //   renderUserPromotion(userPromotion);
-            // })
-            // .catch(console.log("Error happened"))
+            
+              } else {
+                $("#userPromotions").empty();
               }
-            }
-        // console.log("came out");
-        // $.ajax("/Promotions", {method: "GET"})
-        // .then(function (promotions) {
-        //   console.log("now in promotion creation");
-        //   let userPromotion;
-        //   for(const id in promotions) {
-        //     if(brancheId === promotions[id].branchId) {
-        //       userPromotion = promotions[id];
-        //       break;
-        //     }
-        //   }
-        //   renderUserPromotion(userPromotion);
-        // })
-        // .catch(console.log("Error happened"))
+            } 
+        
 
         })
         .catch(console.log("Error happened"))
