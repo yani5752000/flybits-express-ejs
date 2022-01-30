@@ -11,7 +11,7 @@ const renderBranches = (branches) => {
 
 const renderMarketerPromotions = (Promotions) => {
   for(let id in Promotions) {
-    $promotion = createPromotionElement(Promotions[id]);
+    $promotion = createMarketerPromotionElement(Promotions[id]);
     $("#marketerPromotions").append($promotion);
   }
 };
@@ -96,6 +96,23 @@ const createPromotionElement = (promotionObj) => {
     <p>Image: </p> <img src="${promotionObj.imageUrl}" alt="">
     <br>
     <p>Caption:  ${promotionObj.caption}</p>
+  </div>
+  `;
+
+  return $html;
+};
+
+const createMarketerPromotionElement = (promotionObj) => {
+  $html = `
+  <div class="marketer-div">
+    <p>Promotion id: ${promotionObj.id}</p> 
+    <br>
+    <p>Bank Branch id: ${promotionObj.branchId}</p> 
+    <br>
+    <p>Image: </p> <img src="${promotionObj.imageUrl}" alt="">
+    <br>
+    <p>Caption:  ${promotionObj.caption}</p>
+    <button>Delete</button>
   </div>
   `;
 
