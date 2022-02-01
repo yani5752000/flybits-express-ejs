@@ -112,7 +112,7 @@ const createMarketerPromotionElement = (promotionObj) => {
     <p>Image: </p> <img src="${promotionObj.imageUrl}" alt="">
     <br>
     <p>Caption:  ${promotionObj.caption}</p>
-    <button>Delete</button>
+    <button id="Marketer-button>Delete</button>
   </div>
   `;
 
@@ -200,6 +200,9 @@ function initUserMap() {
 $(document).ready(function() {
   // --- our code goes here ---
   console.log("ready");
+  $("#marketer-button").onClick(function() {
+
+  });
 
   loadBranches();
 
