@@ -200,8 +200,9 @@ function initUserMap() {
 $(document).ready(function() {
   // --- our code goes here ---
   console.log("ready");
-  $("#marketer-button").onClick(function() {
-
+  $("#marketer-button").click(function() {
+    const element = $(this).parent().children();
+    console.log(element);
   });
 
   loadBranches();
