@@ -112,7 +112,7 @@ const createMarketerPromotionElement = (promotionObj) => {
     <p>Image: </p> <img src="${promotionObj.imageUrl}" alt="">
     <br>
     <p>Caption:  ${promotionObj.caption}</p>
-    <button id="Marketer-button>Delete</button>
+    <button id="marketer-button">Delete</button>
   </div>
   `;
 
