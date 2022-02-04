@@ -202,7 +202,8 @@ $(document).ready(function() {
   console.log("ready");
   $("#marketer-button").click(function() {
     const element = $(this).parent().children();
-    console.log(element);
+    console.log("element: ", element);
+
   });
 
   loadBranches();
