@@ -112,7 +112,9 @@ const createMarketerPromotionElement = (promotionObj) => {
     <p>Image: </p> <img src="${promotionObj.imageUrl}" alt="">
     <br>
     <p>Caption:  ${promotionObj.caption}</p>
-    <button id="marketer-button">Delete</button>
+    <form method="POST" action="/marketerPromotion/${promotionObj.id}/delete">
+      <button type="submit">Delete</button>
+    </form>
   </div>
   `;
 
@@ -210,11 +212,15 @@ $(document).ready(function() {
   // $("#marketer-button").click(function() {
   //   const element = $(this).parent().children();
   //   console.log("element: ", element);
-  console.log($("#marketer-button"));
-  $("#marketer-button").click(function( event ) {
-    event.preventDefault();
-    // const element = $(this);
-    console.log("element: ");
+  //console.log($("#marketer-button"));
+  // $("#marketer-button").click(function( event ) {
+  //   event.preventDefault();
+  //   // const element = $(this);
+  //   console.log("element: ");
+  // });
+
+  $( ".marketer-button" ).click(function() {
+    alert( "Handler for button called." );
   });
 
   loadBranches();

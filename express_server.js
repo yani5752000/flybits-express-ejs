@@ -71,12 +71,23 @@ app.post("/addPromotion", (req, res) => {
   const imageUrl = req.body.imageUrl;
   const caption = req.body.caption;
   const id = Object.keys(promotionDatabase).length + 1;
-  promotionDatabase[id] = {branchId, imageUrl, caption};
+  promotionDatabase[id] = {id, branchId, imageUrl, caption};
   console.log(promotionDatabase);
   // const templateVars = {branchDatabase: branchDatabase}
   // res.render("marketerPage", templateVars);
   res.redirect("/marketer");
 })
+
+app.post("/marketerPromotion/:promotionId/delete", (req, res) => {
+  delete promotionDatabase[req.params.promotionId];
+ 
+  console.log(promotionDatabase);
+  // const templateVars = {branchDatabase: branchDatabase}
+  // res.render("marketerPage", templateVars);
+  res.redirect("/marketer");
+})
+
+
 app.post("/userCheckPromotion", (req, res) => {
   // console.log("%%%", req.body)
   const latitude = req.body.latitude;
