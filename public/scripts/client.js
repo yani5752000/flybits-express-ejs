@@ -197,13 +197,24 @@ function initUserMap() {
 
 }
 
+// $("#marketer-button").addListener("click", (event) => {
+//     event.preventDefault();
+//     // const element = $(this).parent().children();
+//     const element = $(this);
+//     console.log("element: ", element);
+//   });
+
 $(document).ready(function() {
   // --- our code goes here ---
   console.log("ready");
-  $("#marketer-button").click(function() {
-    const element = $(this).parent().children();
-    console.log("element: ", element);
-
+  // $("#marketer-button").click(function() {
+  //   const element = $(this).parent().children();
+  //   console.log("element: ", element);
+  console.log($("#marketer-button"));
+  $("#marketer-button").click(function( event ) {
+    event.preventDefault();
+    // const element = $(this);
+    console.log("element: ");
   });
 
   loadBranches();
