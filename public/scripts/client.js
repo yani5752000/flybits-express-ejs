@@ -113,7 +113,7 @@ const createMarketerPromotionElement = (promotionObj) => {
     <br>
     <p>Caption:  ${promotionObj.caption}</p>
     <form method="POST" action="/marketerPromotion/${promotionObj.id}/delete">
-      <button type="submit">Delete</button>
+      <button type="submit">Delete This Promotion </button>
     </form>
   </div>
   `;
