@@ -219,7 +219,7 @@ $(document).ready(function() {
   //   console.log("element: ");
   // });
 
-  
+  $("#marketerPromotionForm").submit();
 
   loadBranches();
 
