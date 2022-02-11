@@ -219,7 +219,9 @@ $(document).ready(function() {
   //   console.log("element: ");
   // });
 
-  $("#marketerPromotionForm").submit();
+  $("#marketerPromotionForm").submit(function(event) {
+    
+  });
 
   loadBranches();
 
