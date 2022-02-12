@@ -220,7 +220,7 @@ $(document).ready(function() {
   // });
 
   $("#marketerPromotionForm").submit(function(event) {
-    
+    console.log("Hi");
   });
 
   loadBranches();
